@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/grad">
+        android:background="@drawable/side_nav_bar">
 
         <!--ImageView to display our course image
         <ImageView
