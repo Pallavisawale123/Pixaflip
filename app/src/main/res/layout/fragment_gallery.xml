@@ -31,7 +31,7 @@
             android:id="@+id/rellay1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/grad"
+            android:background="@drawable/side_nav_bar"
             android:paddingBottom="20dp">
 
             <RelativeLayout
@@ -43,19 +43,14 @@
                 android:background="@drawable/circle_border">
 
                 <ImageView
-                    android:layout_width="135dp"
-                    android:layout_height="129dp"
-                    android:layout_marginStart="9dp"
-                    android:layout_marginLeft="9dp"
-                    android:layout_marginTop="9dp"
-                    android:layout_marginEnd="9dp"
-                    android:layout_marginRight="9dp"
-                    android:layout_marginBottom="9dp"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="9dp"
                     android:adjustViewBounds="true"
                     android:background="@drawable/circle"
                     android:padding="3dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/girl2" />
+                    android:src="@drawable/pallavi" />
 
             </RelativeLayout>
 
@@ -67,9 +62,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15sp"
                 android:fontFamily="sans-serif-light"
-                android:text="Dipali Gunjal"
-                android:textColor="@color/background"
-                android:textStyle="bold"
+                android:text="Pallvi Sawale"
+                android:textColor="@color/white"
                 android:textSize="32sp" />
 
 
@@ -82,8 +76,7 @@
                 android:fontFamily="sans-serif"
                 android:text="Android Developer"
                 android:textAllCaps="true"
-                android:textColor="@color/followers"
-                android:textStyle="bold"
+                android:textColor="@color/address"
                 android:textSize="14sp" />
 
 
@@ -144,7 +137,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="DipaliG2021@gmail.com"
+                        android:text="Pallavisawale11@gmail.com"
                         android:textColor="#000000"
                         android:textSize="18sp" />
 
@@ -174,7 +167,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="Ozar(Mig) Nashik Maharashtra"
+                        android:text="At post pimpalkothe ,Nashik Maharashtra"
 
                         android:textColor="#000000"
                         android:textSize="18sp" />
@@ -205,7 +198,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="+91-9130872089"
+                        android:text="7757939062"
 
                         android:textColor="#000000"
                         android:textSize="18sp" />
@@ -268,7 +261,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="https://www.linkedin.com/in/Dipali-Gunjal"
+                        android:text="https://www.linkedin.com/in/Pallavi-Sawale"
                         android:textColor="#000000"
                         android:textSize="18sp" />
 
@@ -298,7 +291,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="https://github.com/Dipali57"
+                        android:text="https://github.com/Pallavisawale123"
                         android:textColor="#000000"
                         android:textSize="18sp" />
 
@@ -315,3 +308,4 @@
 
     </RelativeLayout>
 </ScrollView>
+
