@@ -32,7 +32,8 @@ public class DisplayCovidActivity extends AppCompatActivity {
         mTextViewResult = findViewById(R.id.text_view_result);
 
       //  Button buttonParse = findViewById(R.id.showStatewise);
-        SubmitButton state=findViewById(R.id.showStatewise);
+      final   Button state=findViewById ( R.id.showStatewise );
+       // SubmitButton state=findViewById(R.id.showStatewise);
 
         mQueue = Volley.newRequestQueue(this);
         jsonParse();

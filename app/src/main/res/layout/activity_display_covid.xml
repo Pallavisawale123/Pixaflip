@@ -17,10 +17,10 @@
         android:textColor="@android:color/black"
         android:textSize="20sp" />
 
-    <com.spark.submitbutton.SubmitButton
+    <Button
         android:id="@+id/showStatewise"
         android:layout_width="190dp"
-        android:layout_height="73dp"
+        android:layout_height="63dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
@@ -28,10 +28,7 @@
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="50dp"
         android:text="Display Statewise"
-        app:sub_btn_background="@color/grey"
-        app:sub_btn_duration="3000"
-        app:sub_btn_line_color="@color/followers"
-        app:sub_btn_ripple_color="@color/green"
+        android:background="@drawable/showpdf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
