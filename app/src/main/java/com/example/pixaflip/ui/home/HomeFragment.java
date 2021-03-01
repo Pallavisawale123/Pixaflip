@@ -36,9 +36,9 @@ public class HomeFragment extends Fragment {
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        SubmitButton playVideo=root.findViewById(R.id.playVideo);
-        SubmitButton showPdf=root.findViewById(R.id.showPdf);
-        SubmitButton viewReport=root.findViewById(R.id.Report);
+      final   Button playVideo=root.findViewById(R.id.playVideo);
+       final Button showPdf=root.findViewById(R.id.showPdf);
+        final Button viewReport=root.findViewById(R.id.Report);
         //SubmitButton viewStatewise=root.findViewById(R.id.Statewise);
         playVideo.setOnClickListener(new View.OnClickListener() {
             @Override
