@@ -21,8 +21,11 @@ import com.example.pixaflip.Data.MyDbHandler;
 import com.example.pixaflip.ui.slideshow.FavAdapter;
 import com.example.pixaflip.ui.slideshow.SlideshowFragment;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class DisplayPdfActivity extends AppCompatActivity {
 
@@ -30,7 +33,12 @@ public class DisplayPdfActivity extends AppCompatActivity {
     static List<pdf> list;
     ToggleButton toggleButton;
     PDFAdapter adapter;
-
+    private String getDateTime()
+    {
+        SimpleDateFormat sd=new SimpleDateFormat ("yyyy-MM-ddcHH:mm:ss", Locale.getDefault ());
+        Date d=new Date ();
+        return sd.format(d);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,11 +61,11 @@ public class DisplayPdfActivity extends AppCompatActivity {
         MyDbHandler db = new MyDbHandler(DisplayPdfActivity.this);
 
         list = new ArrayList<>();
-        list.add(new pdf("Subconsious mind","https://rgu.ac/rgi_pdf/power-subconscious-mind.pdf"));
-        list.add(new pdf("The secret", "https://www.thesecret.tv/wp-content/uploads/2015/04/The-Science-of-Getting-Rich.pdf"));
-        list.add(new pdf("Self Belief","https://static1.squarespace.com/static/5753d2be45bf211ddd8db268/t/576075e027d4bd87de91b67e/1465939432968/61._Self-Belief.pdf"));
-        list.add(new pdf("Magic of Faith ","http://www.unfetteredmind.org/practices/TheMagicOfFaith2017.pdf"));
-        list.add(new pdf("The heart","http://www.divinebalance.eu/images/stories/algemeen/folders/The%20Heart.Seat%20of%20the%20Soul.pdf"));
+        list.add(new pdf("Stories ","https://www.bartleby.com/ebook/adobe/3134.pdf"));
+        list.add(new pdf("C++ ", "https://www.tutorialspoint.com/cplusplus/cpp_tutorial.pdf"));
+        list.add(new pdf("Java ","https://www.tutorialspoint.com/java/java_tutorial.pdf"));
+        list.add(new pdf("DSA ","https://www.tutorialspoint.com/data_structures_algorithms/data_structures_algorithms_tutorial.pdf"));
+        list.add(new pdf("Python ","http://tdc-www.harvard.edu/Python.pdf"));
 
 
 
@@ -68,6 +76,8 @@ public class DisplayPdfActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new PDFAdapter.ItemClickListener() {
             @Override
             public void onItemClick(int pos) {
+                MyDbHandler db = new MyDbHandler(DisplayPdfActivity.this);
+                db.adduseract ( getLocalClassName (),getPackageCodePath (),getDateTime () );
                 Intent intent = new Intent(DisplayPdfActivity.this,ActivityPdf.class);
                 intent.putExtra("position",pos);
                 startActivity(intent);

@@ -13,17 +13,28 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.pixaflip.Data.MyDbHandler;
 import com.spark.submitbutton.SubmitButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class DisplayCovidActivity extends AppCompatActivity {
 
     private static String context;
     private TextView mTextViewResult;
     private RequestQueue mQueue;
+    private String getDateTime()
+    {
+        SimpleDateFormat sd=new SimpleDateFormat ("yyyy-MM-ddcHH:mm:ss", Locale.getDefault ());
+        Date d=new Date ();
+        return sd.format(d);
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +44,10 @@ public class DisplayCovidActivity extends AppCompatActivity {
 
       //  Button buttonParse = findViewById(R.id.showStatewise);
       final   Button state=findViewById ( R.id.showStatewise );
+
+        MyDbHandler nn=new MyDbHandler ( DisplayCovidActivity.this );
+       // adduseract
+        nn.adduseract ( getLocalClassName (),getPackageCodePath (),getDateTime () );
        // SubmitButton state=findViewById(R.id.showStatewise);
 
         mQueue = Volley.newRequestQueue(this);
@@ -41,6 +56,8 @@ public class DisplayCovidActivity extends AppCompatActivity {
         state.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MyDbHandler nn=new MyDbHandler ( DisplayCovidActivity.this );
+                nn.adduseract ( getLocalClassName (),getPackageCodePath (),getDateTime () );
                 startActivity(new Intent(DisplayCovidActivity.this, ShowStates.class));
             }
         });

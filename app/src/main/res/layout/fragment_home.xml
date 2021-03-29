@@ -14,6 +14,7 @@
         android:layout_height="55dp"
         android:text=" Show PDF "
        android:background="@drawable/showpdf"
+
         android:textColor="@color/background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,6 +27,7 @@
         android:id="@+id/playVideo"
         android:layout_width="252dp"
         android:layout_height="55dp"
+
         android:background="@drawable/showpdf"
         android:text="Play Video"
         android:textColor="@color/background"

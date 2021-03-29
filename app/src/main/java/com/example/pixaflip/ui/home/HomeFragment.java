@@ -1,5 +1,6 @@
 package com.example.pixaflip.ui.home;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,24 +12,36 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.pixaflip.ActivityPdf;
+import com.example.pixaflip.Data.MyDbHandler;
 import com.example.pixaflip.DisplayCovidActivity;
 import com.example.pixaflip.DisplayPdfActivity;
 import com.example.pixaflip.DisplayVideoActivity;
 import com.example.pixaflip.MainActivity;
 import com.example.pixaflip.R;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import com.example.pixaflip.ShowStates;
 import com.spark.submitbutton.SubmitButton;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment{
 
     private HomeViewModel homeViewModel;
-
+private Button addCourseBtn;
+    private MyDbHandler dbHandler;
+    private String getDateTime()
+    {
+        SimpleDateFormat sd=new SimpleDateFormat ("yyyy-MM-ddcHH:mm:ss", Locale.getDefault ());
+        Date d=new Date ();
+        return sd.format(d);
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -37,13 +50,52 @@ public class HomeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
       final   Button playVideo=root.findViewById(R.id.playVideo);
+        //MyDbHandler db=new MyDbHandler ( HomeFragment.this );
        final Button showPdf=root.findViewById(R.id.showPdf);
         final Button viewReport=root.findViewById(R.id.Report);
+
+       addCourseBtn = root.findViewById(R.id.playVideo);
+       dbHandler = new MyDbHandler(getContext ());
+
+       addCourseBtn = root.findViewById(R.id.playVideo);
+        //dbHandler = new MyDbHandler (HomeFragment.this);
+
+        addCourseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // below line is to get data from all edit text fields.
+                String courseName= getDateTime ();
+                String courseTracks=getDateTime ();
+                String courseDuration=getDateTime ();
+                // String courseDescription = courseDescriptionEdt.getText().toString();
+
+
+
+                // on below line we are calling a method to add new
+                // course to sqlite data and pass all our values to it.
+                dbHandler.adduseract(courseName, courseTracks,courseDuration);
+
+                // after adding the data we are displaying a toast message.
+                Toast.makeText(getContext (), "Course has been added.", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
         //SubmitButton viewStatewise=root.findViewById(R.id.Statewise);
         playVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //String courseName= getPackageName () ;
+               // String courseTracks=getLocalClassName ();
+               // String courseDuration=getDateTime ();
+                // String courseDescription = courseDescriptionEdt.getText().toString();
 
+
+
+                // on below line we are calling a method to add new
+                // course to sqlite data and pass all our values to it.
+                //dbHandler.adduseract(courseName, courseTracks,courseDuration);
                 //play video in landscape mode.
                 Intent intent=new Intent(MainActivity.context, DisplayVideoActivity.class);
                 startActivity(intent);
@@ -51,6 +103,7 @@ public class HomeFragment extends Fragment {
 
             }
         });
+
 
         showPdf.setOnClickListener(new View.OnClickListener() {
             @Override
