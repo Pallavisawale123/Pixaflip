@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -54,36 +55,20 @@ private Button addCourseBtn;
        final Button showPdf=root.findViewById(R.id.showPdf);
         final Button viewReport=root.findViewById(R.id.Report);
 
-       addCourseBtn = root.findViewById(R.id.playVideo);
-       dbHandler = new MyDbHandler(getContext ());
+     //  addCourseBtn = root.findViewById(R.id.playVideo);
+      // dbHandler = new MyDbHandler(getContext ());
 
-       addCourseBtn = root.findViewById(R.id.playVideo);
+      // addCourseBtn = root.findViewById(R.id.playVideo);
         //dbHandler = new MyDbHandler (HomeFragment.this);
 
-        addCourseBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                // below line is to get data from all edit text fields.
-                String courseName= getDateTime ();
-                String courseTracks=getDateTime ();
-                String courseDuration=getDateTime ();
-                // String courseDescription = courseDescriptionEdt.getText().toString();
-
-
-
-                // on below line we are calling a method to add new
-                // course to sqlite data and pass all our values to it.
-                dbHandler.adduseract(courseName, courseTracks,courseDuration);
-
-                // after adding the data we are displaying a toast message.
-                Toast.makeText(getContext (), "Course has been added.", Toast.LENGTH_SHORT).show();
-
-            }
-        });
+        //bach preesed
+       // public void onBackPressed
 
         //SubmitButton viewStatewise=root.findViewById(R.id.Statewise);
-        playVideo.setOnClickListener(new View.OnClickListener() {
+        
+
+       playVideo.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
                 //String courseName= getPackageName () ;
@@ -91,8 +76,8 @@ private Button addCourseBtn;
                // String courseDuration=getDateTime ();
                 // String courseDescription = courseDescriptionEdt.getText().toString();
 
-
-
+                dbHandler = new MyDbHandler(getContext ());
+                dbHandler.adduseract ( "DisplayVideoActivity", "", getDateTime () );
                 // on below line we are calling a method to add new
                 // course to sqlite data and pass all our values to it.
                 //dbHandler.adduseract(courseName, courseTracks,courseDuration);
@@ -108,6 +93,8 @@ private Button addCourseBtn;
         showPdf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dbHandler = new MyDbHandler(getContext ());
+              dbHandler.adduseract ( "DisplayPdfActivity" ,getClass ().toString (),getDateTime ());
                 Intent intent=new Intent(MainActivity.context, DisplayPdfActivity.class);
                 startActivity(intent);
             }
@@ -117,6 +104,8 @@ private Button addCourseBtn;
 
             @Override
             public void onClick(View view) {
+                dbHandler = new MyDbHandler(getContext ());
+                dbHandler.adduseract ("DisplayCovidActivity" ,getClass ().toString (),getDateTime ());
                 Intent intent=new Intent(MainActivity.context,DisplayCovidActivity.class);
                 startActivity(intent);
             }
