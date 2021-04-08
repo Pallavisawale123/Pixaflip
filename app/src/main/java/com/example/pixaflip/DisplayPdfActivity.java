@@ -14,10 +14,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.Button;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.pixaflip.Data.MyFav;
 import com.example.pixaflip.Data.MyDbHandler;
+import com.example.pixaflip.Data.model;
+import com.example.pixaflip.ui.home.HomeFragment;
 import com.example.pixaflip.ui.slideshow.FavAdapter;
 import com.example.pixaflip.ui.slideshow.SlideshowFragment;
 
@@ -26,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import static com.example.pixaflip.MainActivity.context;
 
 public class DisplayPdfActivity extends AppCompatActivity {
 
@@ -39,6 +45,7 @@ public class DisplayPdfActivity extends AppCompatActivity {
         Date d=new Date ();
         return sd.format(d);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,12 +79,31 @@ public class DisplayPdfActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new PDFAdapter(list,this, db);
         recyclerView.setAdapter(adapter);
-
+        final Button playVideo=findViewById(R.id.playVideo);
+        //MyDbHandler db=new MyDbHandler ( HomeFragment.this );
+        final Button showPdf=findViewById(R.id.showPdf);
         adapter.setOnItemClickListener(new PDFAdapter.ItemClickListener() {
             @Override
             public void onItemClick(int pos) {
-                MyDbHandler db = new MyDbHandler(DisplayPdfActivity.this);
-                db.adduseract ( getLocalClassName (),getPackageCodePath (),getDateTime () );
+
+                    MyDbHandler db = new MyDbHandler(DisplayPdfActivity.this);
+                  //  String pname pos.get
+              //  int x=getAda
+
+                String name = list.get(pos).getPdfName();
+
+                Log.d("pdfname",name);
+                Toast.makeText ( context,"name of pdf is"+name,Toast.LENGTH_SHORT ).show ();
+               // model m=new model();
+                //String from2 = m.setFrom1 ( "DisplayPdfActivity" );
+               // Sdb.tring name = list.get(pos).getPdfName();
+
+                    db.adduseract ( "DisplayPdfActivity",name,getDateTime () );
+               // String timestamp2 =m.setTimestamp ( getDateTime () );
+                // model pro = new model(from2,to2,timestamp2);
+               // db.Adduser (m);
+
+
                 Intent intent = new Intent(DisplayPdfActivity.this,ActivityPdf.class);
                 intent.putExtra("position",pos);
                 startActivity(intent);

@@ -8,7 +8,7 @@
     tools:context=".DisplayVideoActivity">
 
     <VideoView
-        android:id="@+id/playVideo"
+        android:id="@+id/playVideo1"
         android:foregroundGravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

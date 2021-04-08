@@ -20,6 +20,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.pixaflip.Data.MyDbHandler;
+import com.example.pixaflip.Data.model;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -160,7 +161,13 @@ public class ShowStates extends AppCompatActivity implements StateAdapter.OnItem
     @Override
     public void onItemClick(int position) {
         MyDbHandler db = new MyDbHandler(ShowStates.this);
-        db.adduseract ( getLocalClassName (),getPackageCodePath (),getDateTime () );
+
+       // String name =  pos.getLoc;MyState modal = courseModalArrayList.get(position);
+        //        holder.Location.setText(modal.getLoc());
+        String name = courseModalArrayList.get(position).getLoc ();
+
+        db.adduseract ( "ShowStates",name,getDateTime () );
+
         Intent detailIntent = new Intent(this, DetailActivity.class);
         MyState clickedItem = courseModalArrayList.get(position);
         detailIntent.putExtra(EXTRA_LOCATION, clickedItem.getLoc());

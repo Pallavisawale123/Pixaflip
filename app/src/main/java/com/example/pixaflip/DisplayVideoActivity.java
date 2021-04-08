@@ -1,5 +1,6 @@
 package com.example.pixaflip;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,16 +25,20 @@ import com.example.pixaflip.Data.MyDbHandler;
 
 public class DisplayVideoActivity extends AppCompatActivity {
 
+    private String getDateTime()
+    {
+        SimpleDateFormat sd=new SimpleDateFormat ("yyyy-MM-ddcHH:mm:ss", Locale.getDefault ());
+        Date d=new Date ();
+        return sd.format(d);
+    }
+    private MyDbHandler dbHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_video);
         //addCourseBtn=findViewById ( R.id.playVideo );
-        VideoView videoView = findViewById(R.id.playVideo);
-       // final Button playVideo=findViewById(R.id.playVideo);
-      //  String s1=getLocalClassName ();
-
-       // addCourseBtn = findViewById(R.id.playVideo);
+        VideoView videoView = findViewById(R.id.playVideo1);
 
 
         String videoPath="android.resource://" + getPackageName() + "/" +R.raw.video;
@@ -56,6 +61,9 @@ public class DisplayVideoActivity extends AppCompatActivity {
             }
         });
 
-
+      // String s= onPause ();
+       // {}
     }
+
+
 }

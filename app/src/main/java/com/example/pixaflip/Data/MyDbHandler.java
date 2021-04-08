@@ -84,6 +84,21 @@ public class MyDbHandler extends SQLiteOpenHelper {
         Log.d("dbPixa", "Successfully inserted");
         db.close();
     }
+
+    public void Adduser(model m){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        //values.put(ID, m.getFrom1 ());
+        values.put(FROMACT, m.getFrom1 ());
+        values.put(TOACT,m.getTo1 ());
+        values.put(CREATEDAT,m.getTimestamp ());
+        db.insert(TABLE_NAME, null, values);
+        Log.d("dbPixa", "Successfully inserted");
+        db.close();
+    }
+
+
     public void deleteById(String name){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(Params.TABLE_NAME,Params.KEY_NAME +"=?", new String[]{String.valueOf(name)});
@@ -135,6 +150,7 @@ public class MyDbHandler extends SQLiteOpenHelper {
         // database after adding database.
         db.close();
     }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + Params.TABLE_NAME);

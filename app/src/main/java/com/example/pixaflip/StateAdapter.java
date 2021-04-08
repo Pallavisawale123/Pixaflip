@@ -86,6 +86,7 @@ public class StateAdapter extends RecyclerView.Adapter<StateAdapter.ViewHolder> 
                 public void onClick(View v) {
                     if (mListener != null) {
                         int position = getAdapterPosition();
+                        //String nn=position.getLoc();
                         if (position != RecyclerView.NO_POSITION) {
                             mListener.onItemClick(position);
                         }

@@ -14,6 +14,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.pixaflip.Data.MyDbHandler;
+import com.example.pixaflip.Data.model;
 import com.spark.submitbutton.SubmitButton;
 
 import org.json.JSONArray;
@@ -45,9 +46,7 @@ public class DisplayCovidActivity extends AppCompatActivity {
       //  Button buttonParse = findViewById(R.id.showStatewise);
       final   Button state=findViewById ( R.id.showStatewise );
 
-        MyDbHandler nn=new MyDbHandler ( DisplayCovidActivity.this );
-       // adduseract
-        nn.adduseract ( getLocalClassName (),getPackageCodePath (),getDateTime () );
+
        // SubmitButton state=findViewById(R.id.showStatewise);
 
         mQueue = Volley.newRequestQueue(this);
@@ -56,8 +55,13 @@ public class DisplayCovidActivity extends AppCompatActivity {
         state.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyDbHandler nn=new MyDbHandler ( DisplayCovidActivity.this );
-                nn.adduseract ( getLocalClassName (),getPackageCodePath (),getDateTime () );
+                MyDbHandler db = new MyDbHandler(DisplayCovidActivity.this);
+                model m=new model();
+                String from2 = m.setFrom1 ( "DisplayCovidActivity" );
+                String to2=m.setTo1 ( "ShowStates" );
+                String timestamp2 =m.setTimestamp ( getDateTime () );
+                // model pro = new model(from2,to2,timestamp2);
+                db.Adduser (m);
                 startActivity(new Intent(DisplayCovidActivity.this, ShowStates.class));
             }
         });

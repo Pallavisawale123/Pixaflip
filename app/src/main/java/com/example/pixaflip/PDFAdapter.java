@@ -26,6 +26,7 @@ public class PDFAdapter extends RecyclerView.Adapter<PDFAdapter.Holder> {
 
     public interface ItemClickListener {
         void onItemClick(int pos);
+       // void ontogclick
         void ontogclick(int pos,boolean state);
     }
 
